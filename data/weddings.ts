@@ -1,3 +1,5 @@
+import { cld } from "@/lib/cloudinary";
+
 export type WeddingType =
   | "Casual Wedding"
   | "Classic Wedding"
@@ -22,7 +24,7 @@ export const weddings: Wedding[] = [
     coupleNames: "Amit & Sanya",
     type: "Classic Wedding",
     location: "",
-    coverImage: "/images/weddings/amit-sanya/cover.jpg",
+    coverImage: cld("/images/weddings/amit-sanya/cover.jpg"),
     coverPosition: "18% center",
     shortDescription:
       "A sun-warmed island celebration shaped by candlelight, silk, and sea air.",
@@ -50,14 +52,14 @@ export const weddings: Wedding[] = [
       "/images/weddings/amit-sanya/gallery-22.jpg",
       "/images/weddings/amit-sanya/gallery-23.jpg",
       "/images/weddings/amit-sanya/gallery-24.jpg",
-    ],
+    ].map(cld),
   },
   {
     slug: "jhanvi-ashish",
     coupleNames: "Jhanvi & Ashish",
     type: "Nature Wedding",
     location: "India",
-    coverImage: "/images/weddings/jhanvi-ashish/cover.jpg",
+    coverImage: cld("/images/weddings/jhanvi-ashish/cover.jpg"),
     coverPosition: "35% center",
     shortDescription:
       "An intimate lakeside wedding with old-world architecture and modern ease.",
@@ -68,17 +70,17 @@ export const weddings: Wedding[] = [
       "/images/weddings/jhanvi-ashish/gallery-02.jpg",
       "/images/weddings/jhanvi-ashish/gallery-03.jpg",
       "/images/weddings/jhanvi-ashish/gallery-04.jpg",
-    ],
+    ].map(cld),
   },
   {
     slug: "durgesh-novika",
     coupleNames: "Durgesh & Novika",
     type: "Classic Wedding",
     location: "Location TBD",
-    coverImage: "/images/weddings/durgesh-novika/cover.jpg",
+    coverImage: cld("/images/weddings/durgesh-novika/cover.jpg"),
     coverPosition: "50% center",
     shortDescription: "A celebration full of warmth, color, and family joy.",
     fullStory: "Full story to be written.",
-    gallery: ["/images/weddings/durgesh-novika/gallery-01.jpg"],
+    gallery: ["/images/weddings/durgesh-novika/gallery-01.jpg"].map(cld),
   },
 ];

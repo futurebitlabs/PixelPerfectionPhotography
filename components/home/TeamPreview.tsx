@@ -2,6 +2,7 @@ import Image from "next/image";
 import { MotionReveal } from "@/components/MotionReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { pressLogos } from "@/data/team";
+import { cld } from "@/lib/cloudinary";
 
 export function TeamPreview() {
   return (
@@ -23,7 +24,7 @@ export function TeamPreview() {
         <MotionReveal delay={0.1} className="mt-10 md:mt-14">
           <div className="relative aspect-[4/3] overflow-hidden md:aspect-[16/8]">
             <Image
-              src="/images/about/team-wide.jpg"
+              src={cld("/images/about/team-wide.jpg")}
               alt="Pixel Perfection photography and videography artists"
               fill
               sizes="100vw"

@@ -1,3 +1,5 @@
+import { cld } from "@/lib/cloudinary";
+
 export type TeamMember = {
   name: string;
   photo: string;
@@ -14,7 +16,7 @@ export const teamMembers: TeamMember[] = [
   { name: "Maya", photo: "/images/team/maya.jpg", group: "leads" },
   { name: "Ira", photo: "/images/team/ira.jpg", group: "leads" },
   { name: "Zain", photo: "/images/team/zain.jpg", group: "leads" },
-];
+].map((member) => ({ ...member, photo: cld(member.photo) }));
 
 export const pressLogos = [
   "WedMeGood",

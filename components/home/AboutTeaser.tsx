@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { MotionReveal } from "@/components/MotionReveal";
 import { SectionHeading } from "@/components/SectionHeading";
+import { cld } from "@/lib/cloudinary";
 
 export function AboutTeaser() {
   return (
@@ -27,7 +28,7 @@ export function AboutTeaser() {
         <MotionReveal delay={0.12}>
           <div className="relative aspect-[4/5] overflow-hidden lg:aspect-[5/6]">
             <Image
-              src="/images/about/about-main.png"
+              src={cld("/images/about/about-main.png")}
               alt="Luxury wedding studio editorial detail"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/PageShell";
 import { SectionHeading } from "@/components/SectionHeading";
 import { teamMembers } from "@/data/team";
+import { cld } from "@/lib/cloudinary";
 
 export const metadata: Metadata = {
   title: "Our Story | Pixel Perfection Photography",
@@ -22,7 +23,7 @@ export default function AboutUsPage() {
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="relative aspect-[4/5] overflow-hidden bg-[#1a1a1a]">
             <Image
-              src="/images/about/about-main.png"
+              src={cld("/images/about/about-main.png")}
               alt="Pixel Perfection founders"
               fill
               sizes="(min-width: 1024px) 45vw, 100vw"

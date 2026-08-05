@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { cld } from "@/lib/cloudinary";
 
 export const metadata: Metadata = {
   title: "Services | Pixel Perfection Photography",
@@ -23,7 +24,7 @@ const services: {
     title: "Wedding Photography",
     description:
       "Capturing the most precious moments of your big day with timeless elegance and emotion.",
-    image: "/images/weddings/jhanvi-ashish/cover.jpg",
+    image: cld("/images/weddings/jhanvi-ashish/cover.jpg"),
     icon: "rings",
     bullets: ["Full day coverage", "Candid moments", "Traditional and cinematic"],
   },
@@ -31,7 +32,7 @@ const services: {
     title: "Pre-Wedding Shoots",
     description:
       "Beautiful locations, creative concepts, and cinematic storytelling for your love story.",
-    image: "/images/weddings/amit-sanya/cover.jpg",
+    image: cld("/images/weddings/amit-sanya/cover.jpg"),
     icon: "camera",
     bullets: ["Concept planning", "Outdoor and destination", "Outfit and pose guidance"],
   },
@@ -39,7 +40,7 @@ const services: {
     title: "Corporate Shoots",
     description:
       "Professional photography for events, conferences, brand requirements, and team identity.",
-    image: "/images/corporate/corporate-main.jpg",
+    image: cld("/images/corporate/corporate-main.jpg"),
     icon: "briefcase",
     bullets: ["Corporate events", "Conferences and seminars", "Team and headshots"],
   },
@@ -47,7 +48,7 @@ const services: {
     title: "School Photography",
     description:
       "Preserving school memories and institutional milestones with creativity and perfection.",
-    image: "/images/school/school-main.jpg",
+    image: cld("/images/school/school-main.jpg"),
     icon: "school",
     bullets: ["Annual functions", "Graduation and convocation", "Sports and cultural events"],
   },
@@ -55,7 +56,7 @@ const services: {
     title: "Birthday and Party Shoots",
     description:
       "From birthdays to anniversaries, we capture every smile, every hug, and every moment.",
-    image: "/images/party/party-main.jpg",
+    image: cld("/images/party/party-main.jpg"),
     icon: "cake",
     bullets: ["Birthdays", "Anniversaries", "Engagements and celebrations"],
   },
@@ -83,7 +84,7 @@ export default function ServicesPage() {
             </div>
             <div className="relative min-h-[360px] lg:min-h-[520px]">
               <Image
-                src="/images/weddings/jhanvi-ashish/cover.jpg"
+                src={cld("/images/weddings/jhanvi-ashish/cover.jpg")}
                 alt="Bride portrait for Pixel Perfection photography services"
                 fill
                 priority
