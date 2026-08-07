@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { SafeImage as Image } from "@/components/SafeImage";
 
 const FADE_MS = 1600;
 

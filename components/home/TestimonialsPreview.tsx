@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { MotionReveal } from "@/components/MotionReveal";
+import { SafeImage as Image } from "@/components/SafeImage";
 import { SectionHeading } from "@/components/SectionHeading";
 import { testimonials } from "@/data/testimonials";
 

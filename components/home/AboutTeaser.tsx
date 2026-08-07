@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { MotionReveal } from "@/components/MotionReveal";
+import { SafeImage as Image } from "@/components/SafeImage";
 import { SectionHeading } from "@/components/SectionHeading";
 import { cld } from "@/lib/cloudinary";
 

@@ -1,6 +1,6 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/PageShell";
+import { SafeImage as Image } from "@/components/SafeImage";
 import { testimonials } from "@/data/testimonials";
 
 export const metadata: Metadata = {

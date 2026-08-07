@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { AutoImage } from "@/components/AutoImage";
+import { SafeImage as Image } from "@/components/SafeImage";
 
 export type GalleryPhoto = {
   src: string;
@@ -29,53 +30,6 @@ function ChevronIcon({ direction }: { direction: "left" | "right" }) {
         strokeWidth="1.6"
       />
     </svg>
-  );
-}
-
-function AutoImage({
-  photo,
-  sizes,
-  priority,
-  onRatio,
-  zoomOnHover = false,
-}: {
-  photo: GalleryPhoto;
-  sizes: string;
-  priority?: boolean;
-  onRatio?: (ratio: number) => void;
-  zoomOnHover?: boolean;
-}) {
-  const [ratio, setRatio] = useState(FALLBACK_RATIO);
-
-  return (
-    <div
-      className="relative w-full overflow-hidden"
-      style={{ aspectRatio: ratio }}
-    >
-      <Image
-        src={photo.src}
-        alt={photo.alt}
-        fill
-        sizes={sizes}
-        priority={priority}
-        className={`object-contain ${
-          zoomOnHover
-            ? "transition duration-700 ease-out group-hover:scale-[1.06]"
-            : ""
-        }`}
-        onLoad={(event) => {
-          const img = event.currentTarget;
-          if (img.naturalWidth && img.naturalHeight) {
-            const nextRatio = img.naturalWidth / img.naturalHeight;
-            setRatio(nextRatio);
-            onRatio?.(nextRatio);
-          }
-        }}
-      />
-      {zoomOnHover ? (
-        <div className="pointer-events-none absolute inset-0 bg-[#1a1a1a] opacity-0 transition-opacity duration-500 group-hover:opacity-10" />
-      ) : null}
-    </div>
   );
 }
 
@@ -111,6 +65,7 @@ function MasonryGrid({
 }) {
   const columnCount = useColumnCount();
   const [ratios, setRatios] = useState<Record<number, number>>({});
+  const [failed, setFailed] = useState<Record<number, true>>({});
 
   const columns = useMemo(() => {
     const heights = new Array(columnCount).fill(0);
@@ -120,13 +75,14 @@ function MasonryGrid({
     );
 
     photos.forEach((photo, index) => {
+      if (failed[index]) return;
       const shortest = heights.indexOf(Math.min(...heights));
       buckets[shortest].push({ photo, index });
       heights[shortest] += 1 / (ratios[index] ?? FALLBACK_RATIO);
     });
 
     return buckets;
-  }, [photos, columnCount, ratios]);
+  }, [photos, columnCount, ratios, failed]);
 
   return (
     <div className="flex">
@@ -141,13 +97,19 @@ function MasonryGrid({
               className="group relative block w-full cursor-zoom-in bg-[#1a1a1a]"
             >
               <AutoImage
-                photo={photo}
+                src={photo.src}
+                alt={photo.alt}
                 sizes="(min-width: 1536px) 25vw, (min-width: 1024px) 33vw, 50vw"
                 priority={index < columnCount}
                 zoomOnHover
                 onRatio={(ratio) =>
                   setRatios((current) =>
                     current[index] === ratio ? current : { ...current, [index]: ratio },
+                  )
+                }
+                onFail={() =>
+                  setFailed((current) =>
+                    current[index] ? current : { ...current, [index]: true },
                   )
                 }
               />
@@ -169,6 +131,7 @@ export function PhotoGallery({
   className?: string;
 }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [failedStack, setFailedStack] = useState<Record<number, true>>({});
 
   const close = useCallback(() => setActiveIndex(null), []);
   const showPrev = useCallback(() => {
@@ -211,21 +174,29 @@ export function PhotoGallery({
         </div>
       ) : (
         <div className={`flex flex-col gap-6 md:gap-8 ${className}`}>
-          {photos.map((photo, index) => (
-            <button
-              key={`${photo.src}-${index}`}
-              type="button"
-              onClick={() => setActiveIndex(index)}
-              aria-label={`Open photo ${index + 1} of ${photos.length}`}
-              className="block w-full cursor-zoom-in bg-[#1a1a1a]"
-            >
-              <AutoImage
-                photo={photo}
-                sizes="(min-width: 1024px) 64rem, 100vw"
-                priority={index === 0}
-              />
-            </button>
-          ))}
+          {photos.map((photo, index) =>
+            failedStack[index] ? null : (
+              <button
+                key={`${photo.src}-${index}`}
+                type="button"
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Open photo ${index + 1} of ${photos.length}`}
+                className="block w-full cursor-zoom-in bg-[#1a1a1a]"
+              >
+                <AutoImage
+                  src={photo.src}
+                  alt={photo.alt}
+                  sizes="(min-width: 1024px) 64rem, 100vw"
+                  priority={index === 0}
+                  onFail={() =>
+                    setFailedStack((current) =>
+                      current[index] ? current : { ...current, [index]: true },
+                    )
+                  }
+                />
+              </button>
+            ),
+          )}
         </div>
       )}
 

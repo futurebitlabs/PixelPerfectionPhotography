@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { cld } from "@/lib/cloudinary";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { cldUrl } from "@/lib/cloudinary";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
     title: "Pixel Perfection Photography",
     description:
       "Cinematic destination wedding photography and videography with a luxury bridal editorial sensibility.",
-    images: [cld("/images/hero/home-hero-01.jpeg")],
+    images: [cldUrl("/images/hero/home-hero-01.jpeg")],
   },
 };
 
@@ -24,6 +26,8 @@ export default function RootLayout({
     <html lang="en" className="h-full scroll-smooth antialiased">
       <body className="min-h-full bg-[#fbf8f3] font-sans text-[#1a1a1a]">
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -1,10 +1,10 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { InstagramStrip } from "@/components/InstagramStrip";
 import { PhotoGallery } from "@/components/PhotoGallery";
+import { SafeImage as Image } from "@/components/SafeImage";
 import { weddings } from "@/data/weddings";
 
 type WeddingPageProps = {

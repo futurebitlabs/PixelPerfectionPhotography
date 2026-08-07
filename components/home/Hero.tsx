@@ -40,9 +40,9 @@ export function Hero() {
       </div>
 
       {/* Bottom Caption */}
-      <p className="absolute bottom-5 left-5 z-10 max-w-[15rem] text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-white/78 md:bottom-8 md:max-w-xs md:text-xs md:tracking-[0.22em] lg:left-8">
+      {/* <p className="absolute bottom-5 left-5 z-10 max-w-[15rem] text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-white/78 md:bottom-8 md:max-w-xs md:text-xs md:tracking-[0.22em] lg:left-8">
         Tina &amp; Sourya, Delhi
-      </p>
+      </p> */}
     </section>
   );
 }

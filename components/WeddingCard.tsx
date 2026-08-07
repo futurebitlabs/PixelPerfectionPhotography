@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { SafeImage as Image } from "@/components/SafeImage";
 import type { Wedding } from "@/data/weddings";
 
 type WeddingCardProps = {

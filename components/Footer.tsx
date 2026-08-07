@@ -39,6 +39,14 @@ export function Footer() {
             </a>
           ))}
         </div>
+        <a
+          href={studio.mapsLink}
+          target="_blank"
+          rel="noreferrer"
+          className="max-w-md text-xs leading-6 text-[#1a1a1a]/60 transition hover:text-[#c9a876]"
+        >
+          {studio.address}
+        </a>
         <p className="text-xs uppercase tracking-[0.22em] text-[#1a1a1a]/55">
           &copy; {new Date().getFullYear()} {studio.name}. Destination wedding
           photography and films.

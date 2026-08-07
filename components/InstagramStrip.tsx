@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { SafeImage as Image } from "@/components/SafeImage";
 import { instagramPosts } from "@/data/instagramPosts";
 import { studio } from "@/data/site";
 

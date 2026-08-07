@@ -4,14 +4,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { navLinks, socialLinks, studio } from "@/data/site";
 
-type HeaderProps = {
-  solid?: boolean;
-  showBookingCta?: boolean;
-};
-
-export function Header({ solid = false, showBookingCta = false }: HeaderProps) {
+export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const isSolid = solid || isScrolled;
+  const isSolid = isScrolled;
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 24);
@@ -52,29 +47,20 @@ export function Header({ solid = false, showBookingCta = false }: HeaderProps) {
           ))}
         </nav>
 
-        {showBookingCta ? (
-          <Link
-            href="/contact-us"
-            className="hidden h-10 items-center justify-center bg-[#c9a876] px-5 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-white outline-offset-4 transition hover:bg-[#1a1a1a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c9a876] md:inline-flex"
-          >
-            Book your shoot
-          </Link>
-        ) : (
-          <div className="hidden items-center gap-2 md:flex">
-            {socialLinks.map(({ label, href, icon: Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={label}
-                className="grid size-8 place-items-center rounded-full border border-current/35 text-[0.62rem] font-semibold uppercase outline-offset-4 transition hover:border-[#c9a876] hover:text-[#c9a876] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c9a876]"
-              >
-                <Icon className="h-5 w-5" />
-              </a>
-            ))}
-          </div>
-        )}
+        <div className="hidden items-center gap-2 md:flex">
+          {socialLinks.map(({ label, href, icon: Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={label}
+              className="grid size-8 place-items-center rounded-full border border-current/35 text-[0.62rem] font-semibold uppercase outline-offset-4 transition hover:border-[#c9a876] hover:text-[#c9a876] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c9a876]"
+            >
+              <Icon className="h-5 w-5" />
+            </a>
+          ))}
+        </div>
 
         <details className="group xl:hidden">
           <summary

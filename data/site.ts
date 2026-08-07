@@ -26,6 +26,8 @@ export const studio = {
   email: "hello@pixelperfection.example",
   phone: "+919012838977",
   whatsappNumber: "919012838977",
+  address:
+    "Hotel Ajay Residency, Kherki Daula, Sector 84, Gurugram, Haryana 122012",
   mapsLink: "https://share.google/lGkdSk1tQs0gL7ZJt",
 };
 
