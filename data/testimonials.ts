@@ -11,7 +11,7 @@ export const testimonials: Testimonial[] = [
     image: cld("/images/testimonials/testimonial-main.jpeg"),
     quote:
       "Every frame felt intentional, cinematic, and completely true to who we are.",
-    name: "Shama & Sourya",
+    name: "Durgesh & Novika",
   },
   {
     image: cld("/images/weddings/jhanvi-ashish/gallery-01.jpg"),

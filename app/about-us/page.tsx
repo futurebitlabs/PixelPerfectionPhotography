@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AvatarImage } from "@/components/AvatarImage";
 import { PageShell } from "@/components/PageShell";
 import { SafeImage as Image } from "@/components/SafeImage";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -82,12 +83,11 @@ function TeamGrid({
         {members.map((member) => (
           <article key={member.name}>
             <div className="relative aspect-[4/5] overflow-hidden bg-[#1a1a1a]">
-              <Image
+              <AvatarImage
                 src={member.photo}
                 alt={`${member.name}, ${title}`}
-                fill
+                name={member.name}
                 sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover"
               />
             </div>
             <h3 className="mt-4 font-serif text-2xl capitalize">

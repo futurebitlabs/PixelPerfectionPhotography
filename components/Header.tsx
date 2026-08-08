@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { LogoMark } from "@/components/LogoMark";
 import { navLinks, socialLinks, studio } from "@/data/site";
 
 export function Header() {
@@ -23,13 +24,15 @@ export function Header() {
           : "border-white/15 bg-transparent text-white"
       }`}
     >
-      <div className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-4 px-5 md:min-h-20 lg:px-8">
+      <div className="flex min-h-16 items-center justify-between gap-4 px-5 md:min-h-20 md:px-8 lg:px-12 xl:px-16">
         <Link
           href="/"
-          className="font-serif text-xl tracking-[0.12em] outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c9a876] md:text-2xl md:tracking-[0.14em]"
+          className="flex items-center gap-2.5 outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c9a876] md:gap-3"
         >
-          <span className="md:hidden">Pixel Perfect</span>
-          <span className="hidden md:inline">{studio.wordmark}</span>
+          <LogoMark className="h-6 w-auto shrink-0 xs:h-7 md:h-9" />
+          <span className="whitespace-nowrap font-serif text-[13px] tracking-[0.02em] xs:text-base sm:text-lg sm:tracking-[0.06em] md:text-2xl md:tracking-[0.14em]">
+            {studio.wordmark}
+          </span>
         </Link>
 
         <nav
@@ -74,7 +77,7 @@ export function Header() {
           <div className="fixed left-0 right-0 top-16 hidden border-y border-[#1a1a1a]/10 bg-[#fbf8f3]/97 text-[#1a1a1a] shadow-sm backdrop-blur group-open:block md:top-20">
             <nav
               aria-label="Mobile navigation"
-              className="mx-auto grid max-w-7xl gap-1 px-5 py-4 text-xs font-semibold uppercase tracking-[0.22em] lg:px-8"
+              className="grid gap-1 px-5 py-4 text-xs font-semibold uppercase tracking-[0.22em] md:px-8 lg:px-12 xl:px-16"
             >
               {navLinks.map((link) => (
                 <Link

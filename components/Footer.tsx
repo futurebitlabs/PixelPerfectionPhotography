@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LogoMark } from "@/components/LogoMark";
 import { navLinks, socialLinks, studio } from "@/data/site";
 
 export function Footer() {
@@ -7,8 +8,9 @@ export function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 text-center md:gap-8">
         <Link
           href="/"
-          className="font-serif text-2xl tracking-[0.14em] md:text-3xl md:tracking-[0.16em]"
+          className="flex items-center gap-3 font-serif text-2xl tracking-[0.14em] md:text-3xl md:tracking-[0.16em]"
         >
+          <LogoMark className="h-8 w-auto shrink-0 md:h-10" />
           {studio.wordmark}
         </Link>
         <nav
